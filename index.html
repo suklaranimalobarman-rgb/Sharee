@@ -3,226 +3,405 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculator</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-
-        .calculator {
-            background: #fff;
-            border-radius: 20px;
-            padding: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            width: 320px;
-        }
-
-        .display {
-            background: #1e1e1e;
-            color: #fff;
-            font-size: 2.5em;
-            padding: 20px;
-            text-align: right;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            min-height: 80px;
-            word-wrap: break-word;
-            word-break: break-all;
-        }
-
-        .buttons {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-        }
-
-        button {
-            padding: 20px;
-            font-size: 1.5em;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 600;
-        }
-
-        button:hover {
-            transform: scale(1.05);
-        }
-
-        button:active {
-            transform: scale(0.95);
-        }
-
-        .number, .decimal {
-            background: #f0f0f0;
-            color: #333;
-        }
-
-        .number:hover, .decimal:hover {
-            background: #e0e0e0;
-        }
-
-        .operator {
-            background: #ff9500;
-            color: #fff;
-        }
-
-        .operator:hover {
-            background: #e88600;
-        }
-
-        .clear {
-            background: #d4d4d2;
-            color: #000;
-        }
-
-        .clear:hover {
-            background: #c4c4c2;
-        }
-
-        .equals {
-            background: #34c759;
-            color: #fff;
-            grid-column: span 2;
-        }
-
-        .equals:hover {
-            background: #2ab04a;
-        }
-
-        .zero {
-            grid-column: span 2;
-        }
-    </style>
+    <meta name="description" content="Mita Sharee - Premium Bangladeshi Sarees | Katan, Banarasi, Silk, Jamdani | Cash on Delivery">
+    <meta name="keywords" content="saree, bangladeshi saree, katan, banarasi, jamdani, silk saree, online saree shop">
+    <title>Mita Sharee - Premium Bangladeshi Sarees | Katan, Banarasi, Silk</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌸</text></svg>">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div class="calculator">
-        <div class="display" id="display">0</div>
-        <div class="buttons">
-            <button class="clear" onclick="clearDisplay()">C</button>
-            <button class="operator" onclick="appendOperator('/')">/</button>
-            <button class="operator" onclick="appendOperator('*')">×</button>
-            <button class="operator" onclick="deleteLast()">⌫</button>
-            
-            <button class="number" onclick="appendNumber('7')">7</button>
-            <button class="number" onclick="appendNumber('8')">8</button>
-            <button class="number" onclick="appendNumber('9')">9</button>
-            <button class="operator" onclick="appendOperator('-')">−</button>
-            
-            <button class="number" onclick="appendNumber('4')">4</button>
-            <button class="number" onclick="appendNumber('5')">5</button>
-            <button class="number" onclick="appendNumber('6')">6</button>
-            <button class="operator" onclick="appendOperator('+')">+</button>
-            
-            <button class="number" onclick="appendNumber('1')">1</button>
-            <button class="number" onclick="appendNumber('2')">2</button>
-            <button class="number" onclick="appendNumber('3')">3</button>
-            <button class="equals" onclick="calculate()">=</button>
-            
-            <button class="number zero" onclick="appendNumber('0')">0</button>
-            <button class="decimal" onclick="appendNumber('.')">.</button>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/918584994354?text=Hello%20Mita%20Sharee!%20I'm%20interested%20in%20your%20sarees" 
+       class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <div class="logo">
+                        <a href="#home">
+                            <span class="logo-icon">🌸</span>
+                            <span class="logo-text">Mita Sharee</span>
+                        </a>
+                    </div>
+
+                    <ul class="nav-menu" id="nav-menu">
+                        <li><a href="#home" class="nav-link">Home</a></li>
+                        <li><a href="#collections" class="nav-link">Collections</a></li>
+                        <li><a href="#about" class="nav-link">About Us</a></li>
+                        <li><a href="#testimonials" class="nav-link">Reviews</a></li>
+                        <li><a href="#contact" class="nav-link">Contact</a></li>
+                    </ul>
+
+                    <div class="nav-icons">
+                        <a href="https://wa.me/918584994354" class="btn-primary">
+                            <i class="fab fa-whatsapp"></i> Order Now
+                        </a>
+                        <div class="hamburger" id="hamburger">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <div class="hero-content" data-aos="fade-up">
+                <h1 class="hero-title">Welcome to <span>Mita Sharee</span></h1>
+                <p class="hero-subtitle">Discover the elegance, tradition, and luxury of premium Bangladeshi sarees</p>
+                <p class="hero-description">
+                    Handpicked sarees crafted with love, culture, and timeless beauty
+                </p>
+                <div class="hero-features">
+                    <span class="feature-badge">✨ Exclusive Collections</span>
+                    <span class="feature-badge">🏆 Best Quality</span>
+                    <span class="feature-badge">💰 Affordable Price</span>
+                </div>
+                <div class="hero-buttons">
+                    <a href="#collections" class="btn-primary btn-large">Shop Collections</a>
+                    <a href="https://wa.me/918584994354" class="btn-secondary btn-large">
+                        <i class="fab fa-whatsapp"></i> WhatsApp Us
+                    </a>
+                </div>
+            </div>
         </div>
-    </div>
+        <div class="hero-scroll">
+            <a href="#features">
+                <i class="fas fa-chevron-down"></i>
+            </a>
+        </div>
+    </section>
 
-    <script>
-        let display = document.getElementById('display');
-        let currentValue = '0';
-        let operator = null;
-        let previousValue = null;
-        let shouldResetDisplay = false;
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3>100% Original</h3>
+                    <p>Authentic handloom sarees directly from weavers</p>
+                </div>
 
-        function updateDisplay() {
-            display.textContent = currentValue;
-        }
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Quality Guaranteed</h3>
+                    <p>Each piece inspected before delivery</p>
+                </div>
 
-        function appendNumber(num) {
-            if (shouldResetDisplay) {
-                currentValue = num;
-                shouldResetDisplay = false;
-            } else {
-                if (num === '.' && currentValue.includes('.')) return;
-                currentValue = currentValue === '0' && num !== '.' ? num : currentValue + num;
-            }
-            updateDisplay();
-        }
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-icon">
+                        <i class="fas fa-money-bill-wave"></i>
+                    </div>
+                    <h3>Cash on Delivery</h3>
+                    <p>Pay when you receive your order</p>
+                </div>
 
-        function appendOperator(op) {
-            if (operator !== null && !shouldResetDisplay) {
-                calculate();
-            }
-            previousValue = currentValue;
-            operator = op;
-            shouldResetDisplay = true;
-        }
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="feature-icon">
+                        <i class="fas fa-shipping-fast"></i>
+                    </div>
+                    <h3>Fast Delivery</h3>
+                    <p>Nationwide delivery in 2-5 days</p>
+                </div>
 
-        function calculate() {
-            if (operator === null || previousValue === null) return;
-            
-            let prev = parseFloat(previousValue);
-            let current = parseFloat(currentValue);
-            let result;
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>Customer Support</h3>
+                    <p>We're here to help via call/WhatsApp</p>
+                </div>
 
-            switch(operator) {
-                case '+':
-                    result = prev + current;
-                    break;
-                case '-':
-                    result = prev - current;
-                    break;
-                case '*':
-                    result = prev * current;
-                    break;
-                case '/':
-                    result = current !== 0 ? prev / current : 'Error';
-                    break;
-            }
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="feature-icon">
+                        <i class="fas fa-tags"></i>
+                    </div>
+                    <h3>Affordable Prices</h3>
+                    <p>Best prices for all occasions</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-            currentValue = result.toString();
-            operator = null;
-            previousValue = null;
-            shouldResetDisplay = true;
-            updateDisplay();
-        }
+    <!-- Collections Section -->
+    <section class="collections" id="collections">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">Our Signature Collections</h2>
+                <p class="section-subtitle">Explore handpicked sarees for every occasion</p>
+            </div>
 
-        function clearDisplay() {
-            currentValue = '0';
-            operator = null;
-            previousValue = null;
-            shouldResetDisplay = false;
-            updateDisplay();
-        }
+            <div class="collection-grid">
+                <!-- Katan Sarees -->
+                <div class="collection-card" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="collection-image">
+                        <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=600&h=800&fit=crop" alt="Katan Saree">
+                        <div class="collection-overlay">
+                            <a href="https://wa.me/918584994354?text=I'm interested in Katan Sarees" class="btn-view">View Collection</a>
+                        </div>
+                    </div>
+                    <div class="collection-content">
+                        <span class="collection-badge">🪷 Premium</span>
+                        <h3>Katan Sarees</h3>
+                        <p>Elegant, shiny, perfect for weddings. Premium embroidery and vibrant colors.</p>
+                        <div class="collection-price">
+                            <span class="price">₹2,500 - ₹8,000</span>
+                        </div>
+                    </div>
+                </div>
 
-        function deleteLast() {
-            currentValue = currentValue.length > 1 ? currentValue.slice(0, -1) : '0';
-            updateDisplay();
-        }
+                <!-- Banarasi Sarees -->
+                <div class="collection-card" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="collection-image">
+                        <img src="https://images.unsplash.com/photo-1583391733981-5eba8746a102?w=600&h=800&fit=crop" alt="Banarasi Saree">
+                        <div class="collection-overlay">
+                            <a href="https://wa.me/918584994354?text=I'm interested in Banarasi Sarees" class="btn-view">View Collection</a>
+                        </div>
+                    </div>
+                    <div class="collection-content">
+                        <span class="collection-badge">💫 Bridal</span>
+                        <h3>Banarasi Sarees</h3>
+                        <p>Traditional artistry meets modern elegance. Perfect for brides and festivals.</p>
+                        <div class="collection-price">
+                            <span class="price">₹3,500 - ₹12,000</span>
+                        </div>
+                    </div>
+                </div>
 
-        // Keyboard support
-        document.addEventListener('keydown', function(e) {
-            if (e.key >= '0' && e.key <= '9' || e.key === '.') {
-                appendNumber(e.key);
-            } else if (e.key === '+' || e.key === '-' || e.key === '*' || e.key === '/') {
-                appendOperator(e.key);
-            } else if (e.key === 'Enter' || e.key === '=') {
-                calculate();
-            } else if (e.key === 'Escape' || e.key === 'c' || e.key === 'C') {
-                clearDisplay();
-            } else if (e.key === 'Backspace') {
-                deleteLast();
-            }
-        });
-    </script>
-</body>
-</html>
+                <!-- Silk Sarees -->
+                <div class="collection-card" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="collection-image">
+                        <img src="https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?w=600&h=800&fit=crop" alt="Silk Saree">
+                        <div class="collection-overlay">
+                            <a href="https://wa.me/918584994354?text=I'm interested in Silk Sarees" class="btn-view">View Collection</a>
+                        </div>
+                    </div>
+                    <div class="collection-content">
+                        <span class="collection-badge">🧵 Comfort</span>
+                        <h3>Soft Silk Sarees</h3>
+                        <p>Lightweight, smooth, comfortable. Suitable for daily wear or parties.</p>
+                        <div class="collection-price">
+                            <span class="price">₹1,800 - ₹5,000</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Jamdani Sarees -->
+                <div class="collection-card" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="collection-image">
+                        <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=600&h=800&fit=crop" alt="Jamdani Saree">
+                        <div class="collection-overlay">
+                            <a href="https://wa.me/918584994354?text=I'm interested in Jamdani Sarees" class="btn-view">View Collection</a>
+                        </div>
+                    </div>
+                    <div class="collection-content">
+                        <span class="collection-badge">🎨 Heritage</span>
+                        <h3>Jamdani Sarees</h3>
+                        <p>Classical Bengali craftsmanship. Uniquely woven with fine detailing.</p>
+                        <div class="collection-price">
+                            <span class="price">₹4,000 - ₹15,000</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Muslin Sarees -->
+                <div class="collection-card" data-aos="zoom-in" data-aos-delay="500">
+                    <div class="collection-image">
+                        <img src="https://images.unsplash.com/photo-1583391733981-5eba8746a102?w=600&h=800&fit=crop" alt="Muslin Saree">
+                        <div class="collection-overlay">
+                            <a href="https://wa.me/918584994354?text=I'm interested in Muslin Sarees" class="btn-view">View Collection</a>
+                        </div>
+                    </div>
+                    <div class="collection-content">
+                        <span class="collection-badge">🌾 Traditional</span>
+                        <h3>Muslin Sarees</h3>
+                        <p>Soft, breathable, and elegant. Perfect for summer and casual occasions.</p>
+                        <div class="collection-price">
+                            <span class="price">₹2,000 - ₹6,000</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Party Wear -->
+                <div class="collection-card" data-aos="zoom-in" data-aos-delay="600">
+                    <div class="collection-image">
+                        <img src="https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?w=600&h=800&fit=crop" alt="Party Wear Saree">
+                        <div class="collection-overlay">
+                            <a href="https://wa.me/918584994354?text=I'm interested in Party Wear Sarees" class="btn-view">View Collection</a>
+                        </div>
+                    </div>
+                    <div class="collection-content">
+                        <span class="collection-badge">🎉 Designer</span>
+                        <h3>Party Wear Sarees</h3>
+                        <p>Contemporary designs with mirror work, sequins, and bold patterns.</p>
+                        <div class="collection-price">
+                            <span class="price">₹2,200 - ₹9,000</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-wrapper">
+                <div class="about-image" data-aos="fade-right">
+                    <img src="https://images.unsplash.com/photo-1609504851268-4aa89cad2d3c?w=800&h=1000&fit=crop" alt="About Mita Sharee">
+                </div>
+                <div class="about-content" data-aos="fade-left">
+                    <h2 class="section-title">About Mita Sharee</h2>
+                    <p class="about-text">
+                        <strong>Mita Sharee</strong> is a trusted online saree boutique dedicated to celebrating the rich heritage of Bengali weaving traditions.
+                    </p>
+                    <p class="about-text">
+                        Based in <strong>Kolkata, India</strong>, we specialize in offering the finest traditional and modern Bangladeshi & Indian sarees — bringing authentic craftsmanship from skilled weavers directly to your doorstep.
+                    </p>
+                    
+                    <div class="about-mission">
+                        <h3>Our Mission</h3>
+                        <p>To provide high-quality sarees at fair prices, ensuring every woman feels confident, beautiful, and culturally connected.</p>
+                    </div>
+
+                    <div class="about-promise">
+                        <h3>Our Promise</h3>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> Direct collaboration with master weavers</li>
+                            <li><i class="fas fa-check-circle"></i> No middlemen — better prices for you</li>
+                            <li><i class="fas fa-check-circle"></i> Genuine handloom products only</li>
+                            <li><i class="fas fa-check-circle"></i> Your satisfaction is our priority</li>
+                        </ul>
+                    </div>
+
+                    <a href="https://wa.me/918584994354" class="btn-primary">Connect With Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">What Our Customers Say</h2>
+                <p class="section-subtitle">Real reviews from real customers</p>
+            </div>
+
+            <div class="testimonial-grid">
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Beautiful Jamdani saree! Exactly as shown. Fast delivery too! Highly recommended."</p>
+                    <div class="testimonial-author">
+                        <strong>Priya M.</strong>
+                        <span>Howrah</span>
+                    </div>
+                </div>
+
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Loved the Banarasi collection. Great quality at affordable price. Will order again!"</p>
+                    <div class="testimonial-author">
+                        <strong>Anjali R.</strong>
+                        <span>Delhi</span>
+                    </div>
+                </div>
+
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Excellent customer service. Helped me choose the perfect wedding saree. Thank you!"</p>
+                    <div class="testimonial-author">
+                        <strong>Sneha D.</strong>
+                        <span>Kolkata</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content" data-aos="zoom-in">
+                <h2>Ready to Find Your Perfect Saree?</h2>
+                <p>Browse our collections or chat with us on WhatsApp for personalized recommendations</p>
+                <div class="cta-buttons">
+                    <a href="#collections" class="btn-primary btn-large">Browse Collections</a>
+                    <a href="https://wa.me/918584994354" class="btn-secondary btn-large">
+                        <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="section-subtitle">Have questions? We're here to help!</p>
+            </div>
+
+            <div class="contact-wrapper">
+                <div class="contact-info" data-aos="fade-right">
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <h3>Phone</h3>
+                        <a href="tel:+918584994354">+91 8584994354</a>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <h3>WhatsApp</h3>
+                        <a href="https://wa.me/918584994354">+91 8584994354</a>
+               
